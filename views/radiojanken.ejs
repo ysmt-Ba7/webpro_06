@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>じゃんけん</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>じゃんけん勝負！</h1>
+
+    <%# --- 結果表示エリア --- %>
+    <% if (typeof judgement !== 'undefined') { %>
+        <div>
+            <h2>今回の結果</h2>
+            <p>
+                あなたの手: <strong><%= your %></strong><br>
+                コンピューターの手: <strong><%= cpu %></strong>
+            </p>
+            
+            <p>
+                <%= judgement %>！
+            </p>
+
+            <hr>
+            
+            <%# --- 成績表示エリア --- %>
+            <p>
+                現在の成績: <%= total %> 戦中， <%= win %> 勝 です．
+            </p>
+        </div>
+
+    <% } else { %>
+        <%# --- 初回アクセス時の処理 --- %>
+        <% win = 0; %>
+        <% total = 0; %>
+        <p>手を選んで「送信」ボタンを押してください。</p>
+    <% } %>
+
+
+    <%# --- じゃんけん継続用フォーム --- %>
+    <form action="/janken" method="get">
+        
+        <input type="radio" name="hand" id="radio1" value="グー" required>
+        <label for="radio1">グー</label><br><br>
+        
+        <input type="radio" name="hand" id="radio2" value="チョキ">
+        <label for="radio2">チョキ</label><br><br>
+        
+        <input type="radio" name="hand" id="radio3" value="パー">
+        <label for="radio3">パー</label><br>
+
+        <%# --- 勝利数と合計回数をサーバーに送り返すための隠しフィールド --- %>
+        <input type="hidden" name="win" value="<%= win %>">
+        <input type="hidden" name="total" value="<%= total %>">
+
+        <input type="submit" value="送信">
+    </form>
+</body>
+</html>
+
