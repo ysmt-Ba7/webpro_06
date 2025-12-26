@@ -1,0 +1,13 @@
+<h1>CoC6版 狂気表</h1>
+<h2>短期の一時的狂気</h2>
+<ul>
+  <% data.short.forEach((item, index) => { %>
+    <li><a href="/coc/short/<%= index %>"><%= item.name %></a></li>
+  <% }) %>
+</ul>
+<h2>長期の一時的狂気</h2>
+<ul>
+  <% data.long.forEach((item, index) => { %>
+    <li><a href="/coc/long/<%= index %>"><%= item.name %></a></li>
+  <% }) %>
+</ul>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>新規登録</title></head>
+<body>
+    <h1>新規キャラクター登録</h1>
+    <form action="/gbf" method="POST">
+        年: <input type="number" name="year" placeholder="2025"><br>
+        月: <input type="number" name="month" placeholder="12"><br>
+        名前: <input type="text" name="name" required><br>
+        属性: <input type="text" name="element"><br>
+        武器: <input type="text" name="weapon"><br>
+        CV: <input type="text" name="cv"><br>
+        <button type="submit">登録する</button>
+    </form>
+    <a href="/gbf">一覧へ戻る</a>
+</body>
+</html>

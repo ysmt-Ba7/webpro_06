@@ -1,0 +1,11 @@
+<h1>モンハン看板モンスター一覧</h1>
+<table border="1">
+  <tr><th>作品</th><th>モンスター名</th><th>詳細</th></tr>
+  <% data.forEach((item, index) => { %>
+    <tr>
+      <td><%= item.title %></td>
+      <td><%= item.name %></td>
+      <td><a href="/mh/<%= index %>">詳細を見る</a></td>
+    </tr>
+  <% }) %>
+</table>

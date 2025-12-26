@@ -1,0 +1,11 @@
+<h1>キャラクター詳細</h1>
+<div style="border: 1px solid #000; padding: 20px; border-radius: 10px;">
+    <h2><%= item.name %></h2>
+    <p><strong>実装時期:</strong> <%= item.year %>年 <%= item.month %>月</p>
+    <p><strong>属性:</strong> <%= item.element %></p>
+    <p><strong>得意武器:</strong> <%= item.weapon %></p>
+    <p><strong>声優(CV):</strong> <%= item.cv %></p>
+</div>
+<br>
+<a href="/gbf">一覧に戻る</a> |
+<a href="/gbf/edit/<%= id %>">編集する</a>

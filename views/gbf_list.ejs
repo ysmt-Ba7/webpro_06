@@ -1,0 +1,19 @@
+<h1>グラブル実装履歴</h1>
+<a href="/gbf/create">新規追加</a>
+<table border="1" style="width:100%; margin-top:10px;">
+    <tr style="background:#eee;">
+        <th>時期</th><th>名前</th><th>属性</th><th>CV</th><th>操作</th>
+    </tr>
+    <% data.forEach((item, index) => { %>
+    <tr>
+        <td><%= item.year %>/<%= item.month %></td>
+        <td><a href="/gbf/<%= index %>"><strong><%= item.name %></strong></a></td>
+        <td><%= item.element %></td>
+        <td><%= item.cv %></td>
+        <td>
+            <a href="/gbf/edit/<%= index %>">編集</a> | 
+            <a href="/gbf/delete/<%= index %>" onclick="return confirm('消去しますか？')">削除</a>
+        </td>
+    </tr>
+    <% }) %>
+</table>
