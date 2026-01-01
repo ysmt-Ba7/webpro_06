@@ -1,7 +1,9 @@
-<h1><%= item.name %></h1>
-<p><strong>分類:</strong> <%= type === 'short' ? '短期' : '長期' %>の一時的狂気</p>
-<hr>
-<p><strong>具体的な処理:</strong></p>
-<p><%= item.detail %></p>
-
-<a href="/coc">一覧に戻る</a>
+<h1>狂気詳細</h1>
+<div style="border: 1px solid #000; padding: 20px; border-radius: 10px;">
+    <h2><%= item.name %></h2>
+    <p><strong>狂気の種類:</strong> <%= item.type %></p>
+    <p><strong>症状の解説:</strong><br><%= item.detail %></p>
+</div>
+<br>
+<a href="/coc">一覧に戻る</a> |
+<a href="/coc/edit/<%= id %>">編集する</a>

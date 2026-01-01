@@ -1,13 +1,18 @@
-<h1>CoC6版 狂気表</h1>
-<h2>短期の一時的狂気</h2>
-<ul>
-  <% data.short.forEach((item, index) => { %>
-    <li><a href="/coc/short/<%= index %>"><%= item.name %></a></li>
-  <% }) %>
-</ul>
-<h2>長期の一時的狂気</h2>
-<ul>
-  <% data.long.forEach((item, index) => { %>
-    <li><a href="/coc/long/<%= index %>"><%= item.name %></a></li>
-  <% }) %>
-</ul>
+<h1>CoC 狂気一覧</h1>
+<a href="/coc/create">新規追加</a>
+<table border="1" style="width:100%; margin-top:10px;">
+    <tr style="background:#eee;">
+        <th>種類</th><th>名前</th><th>内容（概要）</th><th>操作</th>
+    </tr>
+    <% data.forEach((item, index) => { %>
+    <tr>
+        <td><%= item.type %></td>
+        <td><a href="/coc/<%= index %>"><strong><%= item.name %></strong></a></td>
+        <td><%= item.detail.substring(0, 30) %>...</td>
+        <td>
+            <a href="/coc/edit/<%= index %>">編集</a> | 
+            <a href="/coc/delete/<%= index %>" onclick="return confirm('消去しますか？')">削除</a>
+        </td>
+    </tr>
+    <% }) %>
+</table>

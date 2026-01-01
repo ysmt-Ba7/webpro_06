@@ -1,6 +1,9 @@
-<h1><%= item.name %></h1>
-<p><strong>登場作品:</strong> <%= item.title %></p>
-<hr>
-<p><strong>特徴・能力:</strong></p>
-<p><%= item.feature %></p>
-<a href="/mh">一覧に戻る</a>
+<h1>モンスター詳細</h1>
+<div style="border: 1px solid #000; padding: 20px; border-radius: 10px;">
+    <h2><%= item.name %></h2>
+    <p><strong>登場作品:</strong> <%= item.title %></p>
+    <p><strong>生態・特徴:</strong><br><%= item.feature %></p>
+</div>
+<br>
+<a href="/mh">一覧に戻る</a> |
+<a href="/mh/edit/<%= id %>">編集する</a>

@@ -1,11 +1,18 @@
-<h1>モンハン看板モンスター一覧</h1>
-<table border="1">
-  <tr><th>作品</th><th>モンスター名</th><th>詳細</th></tr>
-  <% data.forEach((item, index) => { %>
-    <tr>
-      <td><%= item.title %></td>
-      <td><%= item.name %></td>
-      <td><a href="/mh/<%= index %>">詳細を見る</a></td>
+<h1>歴代モンスター一覧</h1>
+<a href="/mh/create">新規追加</a>
+<table border="1" style="width:100%; margin-top:10px;">
+    <tr style="background:#eee;">
+        <th>登場作品</th><th>モンスター名</th><th>特徴（概要）</th><th>操作</th>
     </tr>
-  <% }) %>
+    <% data.forEach((item, index) => { %>
+    <tr>
+        <td><%= item.title %></td>
+        <td><a href="/mh/<%= index %>"><strong><%= item.name %></strong></a></td>
+        <td><%= item.feature.substring(0, 30) %>...</td>
+        <td>
+            <a href="/mh/edit/<%= index %>">編集</a> | 
+            <a href="/mh/delete/<%= index %>" onclick="return confirm('消去しますか？')">削除</a>
+        </td>
+    </tr>
+    <% }) %>
 </table>

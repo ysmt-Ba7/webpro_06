@@ -1,0 +1,9 @@
+<h1>データの編集</h1>
+<form action="/coc/update/<%= id %>" method="POST">
+    種類: <input type="text" name="type" value="<%= item.type %>" placeholder="一時的 / 不定"><br>
+    名前: <input type="text" name="name" value="<%= item.name %>" style="width: 300px;"><br>
+    内容: <br>
+    <textarea name="detail" rows="5" style="width: 100%;"><%= item.detail %></textarea><br>
+    <button type="submit">更新を保存</button>
+</form>
+<a href="/coc">キャンセル</a>

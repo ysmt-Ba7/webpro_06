@@ -115,14 +115,45 @@ app.get("/coc", (req, res) => {
   res.render('coc_list', { data: cocData });
 });
 
-app.get('/coc/:type/:id', (req, res) => {
-  const { type, id } = req.params; // 分割代入で取得
-  const symptom = cocData[type][id];
-  res.render('coc_detail', { 
-    type: type, 
-    item: symptom,
-    id: id
-  });
+app.get("/coc/create", (req, res) => {
+  res.redirect('/public/coc_new.html');
+});
+
+app.get("/coc/:id", (req, res) => {
+  const id = req.params.id;
+  const detail = cocData[id];
+  res.render('coc_detail', { id: id, item: detail });
+});
+
+app.get("/coc/delete/:id", (req, res) => {
+  cocData.splice(req.params.id, 1);
+  res.redirect('/coc');
+});
+
+app.post("/coc", (req, res) => {
+  const newData = {
+    type: req.body.type,
+    name: req.body.name,
+    detail: req.body.detail,
+  };
+  cocData.push(newData);
+  res.redirect('/coc');
+});
+
+app.get("/coc/edit/:id", (req, res) => {
+  const id = req.params.id;
+  const detail = cocData[id];
+  res.render('coc_edit', { id: id, item: detail });
+});
+
+app.post("/coc/update/:id", (req, res) => {
+  const id = req.params.id;
+  cocData[id] = {
+    type: req.body.type,
+    name: req.body.name,
+    detail: req.body.detail,
+  };
+  res.redirect('/coc');
 });
 
 let mhData = [
@@ -153,6 +184,41 @@ app.get("/mh", (req, res) => {
 app.get('/mh/:id', (req, res) => {
   const id = req.params.id;
   res.render('mh_detail', { item: mhData[id], id: id });
+});
+
+app.get("/mh/create", (req, res) => {
+  res.redirect('/public/mh_new.html');
+});
+
+app.post("/mh", (req, res) => {
+  const newData = {
+    title: req.body.title,
+    name: req.body.name,
+    feature: req.body.feature
+  };
+  mhData.push(newData);
+  res.redirect('/mh');
+});
+
+app.get("/mh/edit/:id", (req, res) => {
+  const id = req.params.id;
+  const detail = mhData[id];
+  res.render('mh_edit', { id: id, item: detail });
+});
+
+app.post("/mh/update/:id", (req, res) => {
+  const id = req.params.id;
+  mhData[id] = {
+    title: req.body.title,
+    name: req.body.name,
+    feature: req.body.feature
+  };
+  res.redirect('/mh');
+});
+
+app.get("/mh/delete/:id", (req, res) => {
+  mhData.splice(req.params.id, 1);
+  res.redirect('/mh');
 });
 
 let charaData = [
@@ -232,7 +298,6 @@ app.get("/gbf/create", (req, res) => {
   res.redirect('/public/gbf_new.html');
 });
 
-// IDのパラメータ名を :number から :id に統一
 app.get("/gbf/:id", (req, res) => {
   const id = req.params.id;
   const detail = charaData[id];

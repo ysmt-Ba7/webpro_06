@@ -1,0 +1,9 @@
+<h1>データの編集</h1>
+<form action="/mh/update/<%= id %>" method="POST">
+    作品名: <input type="text" name="title" value="<%= item.title %>" style="width: 300px;"><br>
+    名前: <input type="text" name="name" value="<%= item.name %>" style="width: 300px;"><br>
+    特徴: <br>
+    <textarea name="feature" rows="8" style="width: 100%;"><%= item.feature %></textarea><br>
+    <button type="submit">更新を保存</button>
+</form>
+<a href="/mh">キャンセル</a>
